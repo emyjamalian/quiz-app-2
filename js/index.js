@@ -1,7 +1,9 @@
-const showanswerButton = document.querySelector(".question-card__button");
+let showanswerButton = document.querySelector('data-js="question-button');
 const answer = document.querySelector(".question-card__answer");
+const bookmarkIcon = document.querySelector('data-js="question-card-icon"');
 
 showanswerButton.addEventListener("click", showAnswer);
+bookmarkIcon.addEventListener("click", bookmarked);
 
 function showAnswer() {
   if (answer.style.display === "none") {
@@ -13,4 +15,8 @@ function showAnswer() {
     showanswerButton.classList.remove("hide-answer");
     showanswerButton.textContent = "show answer";
   }
+}
+
+function bookmarked() {
+  bookmarkIcon.classList.toggle("question-card__icon--active");
 }
