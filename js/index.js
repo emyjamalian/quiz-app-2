@@ -1,4 +1,4 @@
-let showanswerButton = document.querySelector('data-js="question-button');
+let showanswerButton = document.querySelector('data-js="question-button"');
 const answer = document.querySelector(".question-card__answer");
 const bookmarkIcon = document.querySelector('data-js="question-card-icon"');
 

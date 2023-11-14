@@ -1,31 +1,36 @@
 const form = document.querySelector('[data-js="form"]');
-const card = document.querySelector(".question-card");
+let card = document.querySelector(".question-card");
 const main = document.querySelector('[data-js="main"]');
-const formButton = document.querySelector('name="form__button"');
-
-const question = document.querySelector('[name="question"]');
+const formButton = document.querySelector(".form__button");
 
 console.log(question);
 
-// form.addEventListener("submit", (event) => {
-//   event.preventDefault();
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
 
-//   const formData = new FormData(event.target);
-//   const newCard = Object.fromEntries(formData);
+  const formData = new FormData(event.target);
+  const newCard = Object.fromEntries(formData);
 
-//   console.log(formData);
-//   console.log(newCard);
+  console.log(newCard);
+  const newItem = `
+    <sectionclass="question-card">
+    <img
+      class="question-card__icon"
+      data-js="question-card-icon"
+      src="./assets/bookmark.png"
+      alt="bookmark"
+    />
+    <h2 class="question-card__title">${newCard.question}</h2>
+    <button class="question-card__button" data-js="question-button">
+    show answer
+  </button>
+  <p class="question-card__answer"> ${newCard.answer} </p>
+  <div class="question-card__tags">
+  <div class="question-card__tag">${newCard.tag}</div>
+  </section>`;
 
-//   const newAnswer = `<h2 class="card__question">${newCard.question.value}</h2>
-//   <p class="card__answer"> ${newCard.answer.value} </p>
-//   <li class="card__tags__tag"> ${newCard.tag.value}</li>`;
+  console.log(newItem);
 
-//   const actualList = card.innerHTML;
-//   card.innerHTML = newAnswer;
-// });
-
-console.log(formButton);
-// formButton.addEventListener("click", (event) => {
-//   event.preventDefault();
-//   console.log("CLICK");
-// });
+  // Update the content of the card element directly
+  card = newItem.innerhtml;
+});
