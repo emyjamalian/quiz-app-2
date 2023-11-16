@@ -1,6 +1,8 @@
 const showanswerButton = document.querySelector('[data-js="question-button"]');
 const answer = document.querySelector(".question-card__answer");
-const bookmarkIcon = document.querySelector('[data-js="question-card-icon"]');
+const bookmarks = document.querySelectorAll('[data-js="card-bookmark-icon"]');
+
+showanswerButton.addEventListener("click", showAnswer);
 
 function showAnswer() {
   console.log("showAnswer function called");
@@ -15,10 +17,18 @@ function showAnswer() {
   }
 }
 
-function bookmarked() {
-  console.log("bookmarked function called");
-  bookmarkIcon.classList.toggle("question-card__icon--active");
-}
+const toggleBookmarkIcon = (event) => {
+  const bookmarkIcon = event.target;
+  console.log(bookmarkIcon);
+  bookmarkIcon.classList.toggle("active");
+  const isActive = bookmarkIcon.classList.contains("active");
+  if (isActive) {
+    bookmarkIcon.src = "./bookmark_filled.png";
+  } else {
+    bookmarkIcon.src = "./bookmark.png";
+  }
+};
 
-showanswerButton.addEventListener("click", showAnswer);
-bookmarkIcon.addEventListener("click", bookmarked);
+bookmarks.forEach((bookmarkIcon) => {
+  bookmarkIcon.addEventListener("click", toggleBookmarkIcon);
+});
